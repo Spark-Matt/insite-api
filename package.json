@@ -19,6 +19,9 @@
     "express-graphql": "^0.6.12",
     "graphql": "^14.0.2"
   },
+  "resolutions": {
+    "**/event-stream": "3.3.4"
+  },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
