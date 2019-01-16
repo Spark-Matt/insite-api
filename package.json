@@ -1,0 +1,28 @@
+{
+  "name": "insiteDB",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "babel src -d dist",
+    "start": "node dist/index.js",
+    "watch": "nodemon -w src -x npm start",
+    "build": "rimraf dist && babel src -d dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jordan Jones <proxima.aust@gmail.com> (http://jordnjones.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.3.1",
+    "express": "^4.16.3",
+    "express-graphql": "^0.6.12",
+    "graphql": "^14.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "nodemon": "^1.18.4"
+  }
+}
