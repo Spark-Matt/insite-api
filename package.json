@@ -1,31 +1,21 @@
 {
-  "name": "insiteDB",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "prestart": "babel src -d dist",
-    "start": "node dist/index.js",
-    "watch": "nodemon -w src -x npm start",
-    "build": "rimraf dist && babel src -d dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "Jordan Jones <proxima.aust@gmail.com> (http://jordnjones.com/)",
-  "license": "ISC",
-  "dependencies": {
-    "apollo-server": "^2.3.1",
-    "express": "^4.16.3",
-    "express-graphql": "^0.6.12",
-    "graphql": "^14.0.2"
-  },
-  "resolutions": {
-    "**/event-stream": "3.3.4"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "nodemon": "^1.18.4"
-  }
+   "name": "insite-api",
+   "version": "0.0.1",
+   "description": "Awesome project developed with TypeORM.",
+   "devDependencies": {
+      "@types/node": "^8.0.29",
+      "@types/uuid": "^3.4.4",
+      "ts-node": "3.3.0",
+      "typescript": "3.3.3333"
+   },
+   "dependencies": {
+      "graphql-yoga": "^1.17.4",
+      "mysql": "^2.14.1",
+      "reflect-metadata": "^0.1.10",
+      "typeorm": "^0.2.17",
+      "uuid": "^3.3.2"
+   },
+   "scripts": {
+      "start": "ts-node src/index.ts"
+   }
 }
