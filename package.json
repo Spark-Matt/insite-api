@@ -1,21 +1,25 @@
 {
-   "name": "insite-api",
-   "version": "0.0.1",
-   "description": "Awesome project developed with TypeORM.",
-   "devDependencies": {
-      "@types/node": "^8.0.29",
-      "@types/uuid": "^3.4.4",
-      "ts-node": "3.3.0",
-      "typescript": "3.3.3333"
-   },
-   "dependencies": {
-      "graphql-yoga": "^1.17.4",
-      "mysql": "^2.14.1",
-      "reflect-metadata": "^0.1.10",
-      "typeorm": "^0.2.17",
-      "uuid": "^3.3.2"
-   },
-   "scripts": {
-      "start": "ts-node src/index.ts"
-   }
+  "name": "insite-api",
+  "version": "0.0.1",
+  "description": "Awesome project developed with TypeORM.",
+  "devDependencies": {
+    "@types/node": "^8.0.29",
+    "@types/uuid": "^3.4.4",
+    "nodemon": "^1.19.0",
+    "ts-node": "3.3.0",
+    "typescript": "3.3.3333"
+  },
+  "dependencies": {
+    "apollo-server": "^2.5.0",
+    "graphql": "^14.3.0",
+    "graphql-import": "^0.7.1",
+    "mysql": "^2.14.1",
+    "reflect-metadata": "^0.1.10",
+    "typeorm": "^0.2.17",
+    "uuid": "^3.3.2"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon --exec ts-node src/index.ts"
+  }
 }
