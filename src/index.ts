@@ -1,6 +1,7 @@
 import 'reflect-metadata'
 import { importSchema } from 'graphql-import'
 import { ApolloServer } from 'apollo-server-express'
+import { createConnection } from 'typeorm'
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
 import * as path from 'path'
@@ -23,6 +24,8 @@ app.post('/post', (req: express.Request, res: express.Response) => {
   res.end()
 })
 
-app.listen(8080, () => {
-  console.log(`🚀  Server ready at localhost:8080${server.graphqlPath}`)
+createConnection().then(() => {
+  app.listen(8080, () => {
+    console.log(`🚀  Server ready at localhost:8080${server.graphqlPath}`)
+  })
 })
