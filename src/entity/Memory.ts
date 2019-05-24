@@ -33,6 +33,6 @@ export default class Memory extends BaseEntity {
   @Column('bigint')
   swaptotal: number
 
-  @Column()
+  @Column('bigint')
   swapused: number
 }
