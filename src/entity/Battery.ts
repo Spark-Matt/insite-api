@@ -1,24 +1,20 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, BaseEntity, PrimaryColumn } from 'typeorm'
 
 @Entity('battery')
 export default class Battery extends BaseEntity {
-  //Dummy Field to ensure primary key
-  @PrimaryGeneratedColumn()
-  datapoint_id: number
-
-  @Column('uuid')
+  @PrimaryColumn('uuid')
   id: string
 
   @Column('bigint')
   timestamp: number
 
-  @Column()
+  @Column('tinyint')
   hasbattery: boolean
 
   @Column()
   cyclecount: number
 
-  @Column()
+  @Column('tinyint')
   ischarging: boolean
 
   @Column('bigint')
@@ -33,7 +29,9 @@ export default class Battery extends BaseEntity {
   @Column()
   timeremaining: number
 
-  @Column()
+  @Column('tinyint', {
+    default: false,
+  })
   aconnected: boolean
 
   @Column()

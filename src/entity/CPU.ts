@@ -1,11 +1,8 @@
-import { BaseEntity, PrimaryGeneratedColumn, Column } from 'typeorm'
+import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm'
 
+@Entity('cpu')
 export default class CPU extends BaseEntity {
-  //Dummy Field to ensure primary key
-  @PrimaryGeneratedColumn()
-  datapoint_id: number
-
-  @Column('uuid')
+  @PrimaryColumn('uuid')
   id: string
 
   @Column('bigint')
