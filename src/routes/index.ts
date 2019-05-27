@@ -8,6 +8,7 @@ import OperatingSystem from '../entity/OperatingSystem'
 import Time from '../entity/Time'
 import System from '../entity/System'
 import Bios from '../entity/Bios'
+import FileSystem from '../entity/FileSystem'
 
 const app = Router()
 
@@ -59,6 +60,17 @@ app.post('/post', async (req: express.Request, res: express.Response) => {
     timestamp,
     ...time,
   }).save()
+
+  //save Filesystem
+  const { fsSize: filesystems } = req.body
+  filesystems.map(
+    async (filesystem: FileSystem) =>
+      await FileSystem.create({
+        id,
+        timestamp,
+        ...filesystem,
+      }).save()
+  )
 
   //Save memory
   const memory = req.body.mem

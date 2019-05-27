@@ -5,6 +5,7 @@ import { ResolverMap } from '../types/graphql'
 import CPU from '../entity/CPU'
 import System from '../entity/System'
 import Bios from '../entity/Bios'
+import FileSystem from '../entity/FileSystem'
 
 const resolvers: ResolverMap = {
   Query: {
@@ -29,6 +30,12 @@ const resolvers: ResolverMap = {
       let bios = await Bios.findOne({ where: { id } })
       if (!bios) return null
       return bios
+    },
+    async fs(parent) {
+      let { id } = parent
+      let fs = await FileSystem.find({ where: { id } })
+      if (!fs) return null
+      return fs
     },
     async os(parent) {
       let { id } = parent

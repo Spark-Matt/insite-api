@@ -1,11 +1,8 @@
-import { BaseEntity, PrimaryGeneratedColumn, Column } from 'typeorm'
+import { BaseEntity, Column, PrimaryColumn, Entity } from 'typeorm'
 
+@Entity('baseboard')
 export default class Baseboard extends BaseEntity {
-  //Dummy Field to ensure primary key
-  @PrimaryGeneratedColumn()
-  datapoint_id: number
-
-  @Column('uuid')
+  @PrimaryColumn('uuid')
   id: string
 
   @Column('bigint')

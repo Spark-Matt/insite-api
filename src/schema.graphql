@@ -52,6 +52,14 @@ type CPU {
   speedmax: String
   core: Int
 }
+type FileSystem {
+  fs: String
+  type: String
+  size: Int
+  used: Int
+  use: Float
+  mount: String
+}
 
 type Battery {
   timestamp: Int
@@ -75,6 +83,7 @@ type Payload {
   baseboard: BaseBoard
   os: OperatingSystem
   cpu: CPU
+  fs: [FileSystem]
   battery: Battery
 }
 
