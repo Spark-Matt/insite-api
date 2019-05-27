@@ -1,3 +1,84 @@
+type Client {
+  id: ID
+  lastTimestamp: Int
+}
+
+type OperatingSystem {
+  platform: String
+  distro: String
+  release: String
+  codename: String
+  kernel: String
+  arch: String
+  hostname: String
+  logofile: String
+}
+
+type Bios {
+  vendor: String
+  version: String
+  releaseDate: String
+  revision: String
+}
+
+type BaseBoard {
+  manufacturer: String
+  model: String
+  version: String
+  serial: String
+  assetTag: String
+}
+
+type System {
+  manufacturer: String
+  model: String
+  version: String
+  serial: String
+  uuid: String
+  sku: String
+}
+
+type CPU {
+  manufacturer: String
+  brand: String
+  vendor: String
+  family: String
+  model: String
+  stepping: String
+  revision: String
+  voltage: String
+  speed: String
+  speedmin: String
+  speedmax: String
+  core: Int
+}
+
+type Battery {
+  timestamp: Int
+  hasbattery: Boolean
+  cyclecount: Int
+  ischarging: Boolean
+  maxcapacity: Int
+  currentcapacity: Int
+  percent: Int
+  timeremaining: Int
+  acconnected: Boolean
+  type: String
+  model: String
+  manufacturer: String
+  serial: String
+}
+
+type Payload {
+  system: System
+  bios: Bios
+  baseboard: BaseBoard
+  os: OperatingSystem
+  cpu: CPU
+  battery: Battery
+}
+
 type Query {
-  hello: String!
+  getAllClients: [Client]!
+  getAllData(id: ID!): Payload!
 }
