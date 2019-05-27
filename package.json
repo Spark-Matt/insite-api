@@ -1,7 +1,7 @@
 {
   "name": "insite-api",
   "version": "0.0.1",
-  "description": "Awesome project developed with TypeORM.",
+  "description": "Graphql API for tracking and normalizing time-series data.",
   "devDependencies": {
     "@types/graphql": "^14.2.0",
     "@types/node": "^8.0.29",
