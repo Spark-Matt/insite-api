@@ -6,6 +6,8 @@ import User from '../entity/User'
 import Battery from '../entity/Battery'
 import OperatingSystem from '../entity/OperatingSystem'
 import Time from '../entity/Time'
+import System from '../entity/System'
+import Bios from '../entity/Bios'
 
 const app = Router()
 
@@ -25,6 +27,22 @@ app.post('/post', async (req: express.Request, res: express.Response) => {
     lastTimestamp: timestamp,
   })
   await client.save()
+
+  //save system data
+  const { system } = req.body
+  await System.create({
+    id,
+    timestamp,
+    ...system,
+  }).save()
+
+  //save BIOS
+  const { bios } = req.body
+  await Bios.create({
+    id,
+    timestamp,
+    ...bios,
+  }).save()
 
   //Save CPU
   const { os } = req.body
