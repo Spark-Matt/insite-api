@@ -53,6 +53,8 @@ type CPU {
   core: Int
 }
 type FileSystem {
+  id: ID
+  timestamp: Int
   fs: String
   type: String
   size: Int
