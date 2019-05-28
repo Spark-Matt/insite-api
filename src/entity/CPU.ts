@@ -44,6 +44,6 @@ export default class CPU extends BaseEntity {
   @Column()
   cores: number
 
-  @Column()
+  @Column('longtext')
   flags: string
 }
