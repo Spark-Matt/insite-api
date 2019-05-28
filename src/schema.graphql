@@ -3,17 +3,6 @@ type Client {
   lastTimestamp: Int
 }
 
-type OperatingSystem {
-  platform: String
-  distro: String
-  release: String
-  codename: String
-  kernel: String
-  arch: String
-  hostname: String
-  logofile: String
-}
-
 type Bios {
   vendor: String
   version: String
@@ -38,6 +27,17 @@ type System {
   sku: String
 }
 
+type OperatingSystem {
+  platform: String
+  distro: String
+  release: String
+  codename: String
+  kernel: String
+  arch: String
+  hostname: String
+  logofile: String
+}
+
 type CPU {
   manufacturer: String
   brand: String
@@ -52,18 +52,146 @@ type CPU {
   speedmax: String
   core: Int
 }
+
+type Controller {
+  id: ID
+  timestamp: Int
+  vendor: String
+  model: String
+  bus: String
+  vram: Int
+  vramDynamic: Int
+}
+
+type Display {
+  id: ID
+  timestamp: Int
+  connection: String
+  main: Boolean
+  builtin: Boolean
+  model: String
+  resolutionx: Int
+  resolutiony: Int
+  sizex: Int
+  sizey: Int
+  pixeldepth: Int
+}
+
+type NetworkInterface {
+  id: ID
+  timestamp: Int
+  iface: String
+  ip4: String
+  ip6: String
+  mac: String
+  internal: Boolean
+}
+
+type Time {
+  id: ID
+  timestamp: Int
+  current: Int
+  uptime: Int
+  timezone: String
+  timezoneName: String
+}
+
+type CPUSpeed {
+  id: ID
+  timestamp: Int
+  min: Int
+  max: Int
+  avg: Int
+}
+
+type CPULoad {
+  id: ID
+  timestamp: Int
+  avgload: Float
+  currentload: Float
+  currentload_user: Float
+  currentload_system: Float
+  currentload_nice: Float
+  currentload_idle: Float
+  currentload_irq: Float
+  raw_currentload: Float
+  raw_currentload_user: Float
+  raw_currentload_system: Float
+  raw_currentload_nice: Float
+  raw_currentload_idle: Float
+  raw_currentload_irq: Float
+}
+
 type FileSystem {
   id: ID
   timestamp: Int
   fs: String
   type: String
-  size: Int
-  used: Int
+  size: String
+  used: String
   use: Float
   mount: String
 }
 
+type Memory {
+  id: ID
+  timestamp: Int
+  total: String
+  free: String
+  used: String
+  use: Float
+  active: String
+  available: String
+  buffcache: String
+  swaptotal: String
+  swapused: String
+  swapfree: String
+}
+
+type NetworkConnection {
+  id: ID
+  timestamp: Int
+  protocol: String
+  localaddress: String
+  localport: String
+  peeraddress: String
+  peerport: String
+  state: String
+}
+
+type User {
+  id: ID
+  timestamp: Int
+  user: String
+  tty: String
+  date: String
+  time: String
+  ip: String
+  command: String
+}
+
+type Process {
+  id: ID
+  timestamp: Int
+  pid: Int
+  name: String
+  pcpu: Int
+  pcpuu: Int
+  pcpus: Int
+  pmem: Int
+  priority: Int
+  mem_vsz: Int
+  mem_rss: Int
+  nice: Int
+  started: String
+  state: String
+  tty: String
+  user: String
+  command: String
+}
+
 type Battery {
+  id: ID
   timestamp: Int
   hasbattery: Boolean
   cyclecount: Int
@@ -85,8 +213,18 @@ type Payload {
   baseboard: BaseBoard
   os: OperatingSystem
   cpu: CPU
+  displays: [Display]
+  controllers: [Controller]
+  networkInterfaces: [NetworkInterface]
+  time: Time
+  cpuSpeed: [CPUSpeed]
+  cpuLoad: [CPULoad]
   fs: [FileSystem]
+  memory: [Memory]
+  networkConnections: [NetworkConnection]
+  users: [User]
   battery: Battery
+  processes: [Process]
 }
 
 type Query {

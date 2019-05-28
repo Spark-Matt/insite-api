@@ -6,6 +6,15 @@ import CPU from '../entity/CPU'
 import System from '../entity/System'
 import Bios from '../entity/Bios'
 import FileSystem from '../entity/FileSystem'
+import Baseboard from '../entity/Baseboard'
+import Display from '../entity/graphics/Display'
+import Controller from '../entity/graphics/Controller'
+import { Network } from '../entity/Network'
+import User from '../entity/User'
+import Process from '../entity/Process'
+import Time from '../entity/Time'
+import CpuSpeed from '../entity/CpuSpeed'
+import CurrentLoad from '../entity/CurrentLoad'
 
 const resolvers: ResolverMap = {
   Query: {
@@ -31,11 +40,11 @@ const resolvers: ResolverMap = {
       if (!bios) return null
       return bios
     },
-    async fs(parent) {
+    async baseboard(parent) {
       let { id } = parent
-      let fs = await FileSystem.find({ where: { id } })
-      if (!fs) return null
-      return fs
+      let baseboard = await Baseboard.findOne({ where: { id } })
+      if (!baseboard) return null
+      return baseboard
     },
     async os(parent) {
       let { id } = parent
@@ -49,11 +58,66 @@ const resolvers: ResolverMap = {
       if (!cpu) return null
       return cpu
     },
+    async displays(parent) {
+      let { id } = parent
+      let display = await Display.find({ where: { id } })
+      if (!display) return null
+      return display
+    },
+    async controllers(parent) {
+      let { id } = parent
+      let controller = await Controller.find({ where: { id } })
+      if (!controller) return null
+      return controller
+    },
+    async networkInterfaces(parent) {
+      let { id } = parent
+      let networkInterfaces = await Network.find({ where: { id } })
+      if (!networkInterfaces) return null
+      return networkInterfaces
+    },
+    async time(parent) {
+      let { id } = parent
+      let time = await Time.findOne({ where: { id } })
+      if (!time) return null
+      return time
+    },
+    async cpuSpeed(parent) {
+      let { id } = parent
+      let cpuSpeeds = await CpuSpeed.find({ where: { id } })
+      if (!cpuSpeeds) return null
+      return cpuSpeeds
+    },
+    async cpuLoad(parent) {
+      let { id } = parent
+      //TODO rename for consistency
+      let cpuLoads = await CurrentLoad.find({ where: { id } })
+      if (!cpuLoads) return null
+      return cpuLoads
+    },
+    async users(parent) {
+      let { id } = parent
+      let users = await User.find({ where: { id } })
+      if (!users) return null
+      return users
+    },
+    async fs(parent) {
+      let { id } = parent
+      let fs = await FileSystem.find({ where: { id } })
+      if (!fs) return null
+      return fs
+    },
     async battery(parent) {
       let { id } = parent
       let battery = await Battery.findOne({ where: { id } })
       if (!battery) return null
       return battery
+    },
+    async processes(parent) {
+      let { id } = parent
+      let processes = await Process.findOne({ where: { id } })
+      if (!processes) return null
+      return processes
     },
   },
 }
