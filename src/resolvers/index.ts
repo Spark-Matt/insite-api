@@ -15,6 +15,7 @@ import Process from '../entity/Process'
 import Time from '../entity/Time'
 import CpuSpeed from '../entity/CpuSpeed'
 import CurrentLoad from '../entity/CurrentLoad'
+import Memory from '../entity/Memory'
 
 const resolvers: ResolverMap = {
   Query: {
@@ -107,6 +108,12 @@ const resolvers: ResolverMap = {
       if (!fs) return null
       return fs
     },
+    async memory(parent) {
+      let { id } = parent
+      let memory = await Memory.findOne({ where: { id } })
+      if (!memory) return null
+      return memory
+    },
     async battery(parent) {
       let { id } = parent
       let battery = await Battery.findOne({ where: { id } })
@@ -115,7 +122,7 @@ const resolvers: ResolverMap = {
     },
     async processes(parent) {
       let { id } = parent
-      let processes = await Process.findOne({ where: { id } })
+      let processes = await Process.find({ where: { id } })
       if (!processes) return null
       return processes
     },
