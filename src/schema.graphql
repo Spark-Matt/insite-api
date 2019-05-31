@@ -175,13 +175,13 @@ type Process {
   timestamp: Int
   pid: Int
   name: String
-  pcpu: Int
-  pcpuu: Int
-  pcpus: Int
-  pmem: Int
+  pcpu: String
+  pcpuu: String
+  pcpus: String
+  pmem: String
   priority: Int
-  mem_vsz: Int
-  mem_rss: Int
+  mem_vsz: String
+  mem_rss: String
   nice: Int
   started: String
   state: String
@@ -220,7 +220,7 @@ type Payload {
   cpuSpeed: [CPUSpeed]
   cpuLoad: [CPULoad]
   fs: [FileSystem]
-  memory: [Memory]
+  memory: Memory
   networkConnections: [NetworkConnection]
   users: [User]
   battery: Battery

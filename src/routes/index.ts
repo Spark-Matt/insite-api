@@ -27,9 +27,9 @@ app.post('/post', async (req: express.Request, res: express.Response) => {
   //If POST doesnt have a body, reject
   if (!req.body) return res.end()
   //UTC Timestamp
-  const timestamp = Math.floor(Date.now() / 1000)
+  const { timestamp } = req.body
   //static id, system server feature coming soon
-  const id = '9624af56-4f5f-4da2-89e0-7a41f2642061'
+  const { id } = req.body
   //const { _id: id } = req.body
   const client = Client.create({
     id,
