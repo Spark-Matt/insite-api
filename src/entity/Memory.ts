@@ -1,4 +1,10 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from 'typeorm'
+import {
+  Entity,
+  Column,
+  BaseEntity,
+  PrimaryGeneratedColumn,
+  BeforeInsert,
+} from 'typeorm'
 
 @Entity('memory')
 export default class Memory extends BaseEntity {
@@ -18,6 +24,11 @@ export default class Memory extends BaseEntity {
   @Column('bigint')
   free: number
 
+  @Column('bigint', {
+    default: 0.0,
+  })
+  use: number
+
   @Column('bigint')
   used: number
 
@@ -35,4 +46,12 @@ export default class Memory extends BaseEntity {
 
   @Column('bigint')
   swapused: number
+
+  @Column('bigint')
+  swappercent: number
+  @BeforeInsert()
+  async calculatePercetages() {
+    this.use = (this.used / this.total) * 100
+    this.swappercent = (this.swapused / this.swaptotal) * 100
+  }
 }
