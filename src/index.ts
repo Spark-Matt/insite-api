@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import { importSchema } from 'graphql-import'
 import { ApolloServer, makeExecutableSchema } from 'apollo-server-express'
 import { createConnection } from 'typeorm'
-import * as express from 'express'
+import express from 'express'
 import * as bodyParser from 'body-parser'
 import * as path from 'path'
 
