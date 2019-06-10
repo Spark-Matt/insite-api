@@ -145,6 +145,7 @@ type Memory {
   buffcache: String
   swaptotal: String
   swapused: String
+  swappercent: String
   swapfree: String
 }
 

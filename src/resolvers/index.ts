@@ -110,7 +110,13 @@ const resolvers: ResolverMap = {
     },
     async memory(parent) {
       let { id } = parent
-      let memory = await Memory.findOne({ where: { id } })
+      console.log(id)
+      let memory = await Memory.findOne({
+        where: { id },
+        order: {
+          timestamp: 'DESC',
+        },
+      })
       if (!memory) return null
       return memory
     },
