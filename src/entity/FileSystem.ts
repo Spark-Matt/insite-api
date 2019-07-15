@@ -17,6 +17,7 @@ export default class FileSystem extends BaseEntity {
 
   @Column()
   type: string
+  default: "NFTS"
 
   @Column('bigint')
   size: number

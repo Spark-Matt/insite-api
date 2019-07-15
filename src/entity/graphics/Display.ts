@@ -38,4 +38,5 @@ export default class Display extends BaseEntity {
 
   @Column()
   pixeldepth: number
+  default: 0
 }
