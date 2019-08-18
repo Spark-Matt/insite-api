@@ -3,7 +3,6 @@ import OperatingSystem from '../entity/OperatingSystem'
 import Client from '../entity/Client'
 import { ResolverMap } from '../types/graphql'
 import CPU from '../entity/CPU'
-import System from '../entity/System'
 import Bios from '../entity/Bios'
 import FileSystem from '../entity/FileSystem'
 import Baseboard from '../entity/Baseboard'
@@ -12,12 +11,20 @@ import Controller from '../entity/graphics/Controller'
 import { Network } from '../entity/Network'
 import User from '../entity/User'
 import Process from '../entity/Process'
-import Time from '../entity/Time'
 import CpuSpeed from '../entity/CpuSpeed'
 import CurrentLoad from '../entity/CurrentLoad'
 import Memory from '../entity/Memory'
 
+import system from './system'
+import time from './time'
+import { pubsub } from '../subscriptions'
+
 const resolvers: ResolverMap = {
+  Subscription: {
+    jsonAdded: {
+      subscribe: () => pubsub.asyncIterator(['JSON_ADDED']),
+    },
+  },
   Query: {
     async getAllClients() {
       let clients = await Client.find()
@@ -29,12 +36,7 @@ const resolvers: ResolverMap = {
     },
   },
   Payload: {
-    async system(parent) {
-      let { id } = parent
-      let system = await System.findOne({ where: { id } })
-      if (!system) return null
-      return system
-    },
+    system,
     async bios(parent) {
       let { id } = parent
       let bios = await Bios.findOne({ where: { id } })
@@ -77,12 +79,7 @@ const resolvers: ResolverMap = {
       if (!networkInterfaces) return null
       return networkInterfaces
     },
-    async time(parent) {
-      let { id } = parent
-      let time = await Time.findOne({ where: { id } })
-      if (!time) return null
-      return time
-    },
+    time,
     async cpuSpeed(parent) {
       let { id } = parent
       let cpuSpeeds = await CpuSpeed.find({ where: { id } })
@@ -110,7 +107,6 @@ const resolvers: ResolverMap = {
     },
     async memory(parent) {
       let { id } = parent
-      console.log(id)
       let memory = await Memory.findOne({
         where: { id },
         order: {

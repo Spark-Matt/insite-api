@@ -20,6 +20,8 @@ import NetworkConnection from '../entity/NetworkConnection'
 import NetworkStat from '../entity/NetworkStats'
 import Process from '../entity/Process'
 
+import { pubsub } from '../subscriptions'
+
 const app = Router()
 
 app.post('/post', async (req: express.Request, res: express.Response) => {
@@ -181,6 +183,7 @@ app.post('/post', async (req: express.Request, res: express.Response) => {
     timestamp,
     ...battery,
   }).save()
+  pubsub.publish('JSON ADDED', { json: req.body })
   res.end()
 })
 
