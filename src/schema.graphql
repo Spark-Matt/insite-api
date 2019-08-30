@@ -236,3 +236,7 @@ type Query {
 type Subscription {
   jsonAdded: String
 }
+
+type Mutation{
+  register(email: String!, password: String!): Boolean
+}

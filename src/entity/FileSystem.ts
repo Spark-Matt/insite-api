@@ -16,13 +16,13 @@ export default class FileSystem extends BaseEntity {
   fs: string
 
   @Column()
-  type: string
+  type: string="NFTS"
 
   @Column('bigint')
-  size: number
+  size: number=0
 
   @Column('bigint')
-  used: number
+  used: number=0
 
   @Column('decimal')
   use: number

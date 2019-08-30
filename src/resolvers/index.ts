@@ -17,14 +17,26 @@ import Memory from '../entity/Memory'
 
 import system from './system'
 import time from './time'
-import { pubsub } from '../subscriptions'
+//import { pubsub } from '../subscriptions'
+import * as bcrypt from "bcryptjs";
 
 const resolvers: ResolverMap = {
-  Subscription: {
+  Mutation:{
+    register: async (_, {email, password}: GQL.IRegisterOnMutationArguments) => {
+      const hashedpass=await bcrypt.hash(password, 10);
+      const user= User.create({
+        email,
+        password: hashedpass,
+      });
+      await user.save();
+      return true;
+    }
+  },
+ /* Subscription: {
     jsonAdded: {
       subscribe: () => pubsub.asyncIterator(['JSON_ADDED']),
     },
-  },
+  },*/
   Query: {
     async getAllClients() {
       let clients = await Client.find()

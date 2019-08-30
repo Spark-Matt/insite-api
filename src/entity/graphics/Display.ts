@@ -37,5 +37,5 @@ export default class Display extends BaseEntity {
   sizey: number
 
   @Column()
-  pixeldepth: number
+  pixeldepth: number=0
 }
